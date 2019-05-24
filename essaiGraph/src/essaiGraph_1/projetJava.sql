@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `anneescolaire` (
 
 DROP TABLE IF EXISTS `trimestre`;
 CREATE TABLE IF NOT EXISTS `trimestre` (
-  `Id` varchar(100) NOT NULL,
+  `Id_trimestre` varchar(100) NOT NULL,
   `Numero` int(30) NOT NULL,
   `Debut` varchar(255) NOT NULL,
   `Fin` varchar(255) NOT NULL,
@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS `niveau`;
 CREATE TABLE IF NOT EXISTS `niveau` (
   `Id_niveau` varchar(30) NOT NULL,
   `nom` varchar(30) NOT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id_niveau`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -83,9 +83,35 @@ CREATE TABLE IF NOT EXISTS `niveau` (
 
 DROP TABLE IF EXISTS `classe`;
 CREATE TABLE IF NOT EXISTS `classe` (
-  `Id` varchar(30) NOT NULL,
+  `Id_classe` varchar(30) NOT NULL,
   `Id_ecole` varchar(30) NOT NULL,
   `Id_niveau` varchar(30) NOT NULL,
   `Id_anneescolaire` varchar(30) NOT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id_classe`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `discipline`
+--
+
+DROP TABLE IF EXISTS `discipline`;
+CREATE TABLE IF NOT EXISTS `discipline` (
+  `Id_discipline` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id_discipline`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `personne`
+--
+
+DROP TABLE IF EXISTS `personne`;
+CREATE TABLE IF NOT EXISTS `personne` (
+  `Id_personne` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prénom` varchar(30) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id_personne`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
