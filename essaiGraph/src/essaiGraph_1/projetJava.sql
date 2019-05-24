@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `ecole` (
 
 DROP TABLE IF EXISTS `anneescolaire`;
 CREATE TABLE IF NOT EXISTS `anneescolaire` (
-  `Id` varchar(30) NOT NULL,
+  `Id_annescolaire` varchar(30) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -70,7 +70,22 @@ CREATE TABLE IF NOT EXISTS `trimestre` (
 
 DROP TABLE IF EXISTS `niveau`;
 CREATE TABLE IF NOT EXISTS `niveau` (
-  `Id` varchar(30) NOT NULL,
+  `Id_niveau` varchar(30) NOT NULL,
   `nom` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `classe`
+--
+
+DROP TABLE IF EXISTS `classe`;
+CREATE TABLE IF NOT EXISTS `classe` (
+  `Id` varchar(30) NOT NULL,
+  `Id_ecole` varchar(30) NOT NULL,
+  `Id_niveau` varchar(30) NOT NULL,
+  `Id_anneescolaire` varchar(30) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
