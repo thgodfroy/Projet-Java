@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `ecole` (
 
 DROP TABLE IF EXISTS `anneescolaire`;
 CREATE TABLE IF NOT EXISTS `anneescolaire` (
-  `Id_annescolaire` varchar(30) NOT NULL,
-  PRIMARY KEY (`Id`)
+  `Id_anneescolaire` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id_anneescolaire`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -58,8 +58,11 @@ CREATE TABLE IF NOT EXISTS `trimestre` (
   `Numero` int(30) NOT NULL,
   `Debut` varchar(255) NOT NULL,
   `Fin` varchar(255) NOT NULL,
-  `AnneeScol` varchar(10) NOT NULL,
-  PRIMARY KEY (`Id`)
+  -- clé étrangère année scol
+  CONSTRAINT Id_anneescolaire
+    FOREIGN KEY (anneescolaire)
+    REFERENCES anneescolaire(Id_anneescolaire)
+  PRIMARY KEY (`Id_trimestre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -84,9 +87,18 @@ CREATE TABLE IF NOT EXISTS `niveau` (
 DROP TABLE IF EXISTS `classe`;
 CREATE TABLE IF NOT EXISTS `classe` (
   `Id_classe` varchar(30) NOT NULL,
-  `Id_ecole` varchar(30) NOT NULL,
-  `Id_niveau` varchar(30) NOT NULL,
-  `Id_anneescolaire` varchar(30) NOT NULL,
+  --clé étrangère id_ecole
+  CONSTRAINT Id_ecole
+    FOREIGN KEY (ecole)
+    REFERENCES ecole(Id_ecole)
+  --clé étrangère id_niveau
+  CONSTRAINT Id_niveau
+    FOREIGN KEY (niveau)
+    REFERENCES niveau(Id_niveau)
+  --clé étrangère Id_anneescolaire
+  CONSTRAINT Id_anneescolaire
+    FOREIGN KEY (anneescolaire)
+    REFERENCES anneescolaire(Id_anneescolaire)
   PRIMARY KEY (`Id_classe`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
@@ -124,9 +136,18 @@ CREATE TABLE IF NOT EXISTS `personne` (
 DROP TABLE IF EXISTS `enseignement`;
 CREATE TABLE IF NOT EXISTS `enseignement` (
   `Id_enseignement` varchar(30) NOT NULL,
-  `Id_classe` varchar(30) NOT NULL,
-  `Id_discipline` varchar(30) NOT NULL,
-  `Id_personne` varchar(30) NOT NULL,
+  -- clé étrangère classe
+  CONSTRAINT Id_classe
+    FOREIGN KEY (classe)
+    REFERENCES classe(Id_classe)
+  -- clé étrangère discipline
+  CONSTRAINT Id_discipline
+    FOREIGN KEY (discipline)
+    REFERENCES discipline(Id_discipline)
+  -- clé étrangère personne
+    CONSTRAINT Id_personne
+      FOREIGN KEY (personne)
+      REFERENCES personne(Id_personne)
   PRIMARY KEY (`Id_enseignement`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -139,8 +160,14 @@ CREATE TABLE IF NOT EXISTS `enseignement` (
 DROP TABLE IF EXISTS `inscription`;
 CREATE TABLE IF NOT EXISTS `inscription` (
   `Id_inscrip` varchar(30) NOT NULL,
-  `Id_classe` varchar(30) NOT NULL,
-  `Id_personne` varchar(30) NOT NULL,
+  -- clé étrangère classe
+  CONSTRAINT Id_classe
+    FOREIGN KEY (classe)
+    REFERENCES classe(Id_classe)
+    -- clé étrangère personne
+  CONSTRAINT Id_personne
+    FOREIGN KEY (personne)
+    REFERENCES personne(Id_personne)
   PRIMARY KEY (`Id_inscrip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
