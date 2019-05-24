@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `projetJava`
 --
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ecole`
+--
+
+DROP TABLE IF EXISTS `ecole`;
+CREATE TABLE IF NOT EXISTS `ecole` (
+  `Id_ecole` varchar(30) NOT NULL,
+  `nom_ecole` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id_ecole`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `anneescolaire`
+--
+
+DROP TABLE IF EXISTS `anneescolaire`;
+CREATE TABLE IF NOT EXISTS `anneescolaire` (
+  `Id` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -35,5 +59,18 @@ CREATE TABLE IF NOT EXISTS `trimestre` (
   `Debut` varchar(255) NOT NULL,
   `Fin` varchar(255) NOT NULL,
   `AnneeScol` varchar(10) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `niveau`
+--
+
+DROP TABLE IF EXISTS `niveau`;
+CREATE TABLE IF NOT EXISTS `niveau` (
+  `Id` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
