@@ -157,3 +157,17 @@ CREATE TABLE IF NOT EXISTS `bulletin` (
   `appreciation` varchar(100) NOT NULL,
   PRIMARY KEY (`Id_bulletin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailbulletin`
+--
+
+DROP TABLE IF EXISTS `detailbulletin`;
+CREATE TABLE IF NOT EXISTS `detailbulletin` (
+  `Id_detail` varchar(30) NOT NULL,
+  `Id_bulletin` varchar(30) NOT NULL,
+  `Id_enseignement` varchar(30) NOT NULL,
+  `appreciation` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id_detail`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
