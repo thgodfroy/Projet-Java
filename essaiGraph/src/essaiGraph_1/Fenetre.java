@@ -25,5 +25,6 @@ public class Fenetre extends JFrame {
 	    this.getContentPane().add(new JButton("Reporting"), BorderLayout.SOUTH);
 	    this.setVisible(true);
 	    //Bonjour
+	    //yes
 	  }           
 }
