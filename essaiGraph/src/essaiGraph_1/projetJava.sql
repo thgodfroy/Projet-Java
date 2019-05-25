@@ -210,5 +210,5 @@ CREATE TABLE IF NOT EXISTS `evaluation` (
   `Id_detail` varchar(30) NOT NULL,
   `note` int(10) NOT NULL,
   `appreciation` varchar(30) NOT NULL,
-  PRIMARY KEY (`Id_personne`)
+  PRIMARY KEY (`Id_evaluation`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
