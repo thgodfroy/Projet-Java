@@ -10,7 +10,7 @@ public class Fenetre extends JFrame {
 	private JPanel pan = new JPanel();
 
 	  public Fenetre(){
-	    this.setTitle("Ma fenêtre");
+	    this.setTitle("Ma fenetre");
 	    this.setSize(300, 150);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
@@ -20,7 +20,7 @@ public class Fenetre extends JFrame {
 	    //Au centre
 	    this.getContentPane().add(new JButton("Recherche d'informations"), BorderLayout.CENTER);
 	    //Au nord
-	    this.getContentPane().add(new JButton("Mis à jour de données"), BorderLayout.NORTH);
+	    this.getContentPane().add(new JButton("Mise a jour de donnees"), BorderLayout.NORTH);
 	    //Au sud
 	    this.getContentPane().add(new JButton("Reporting"), BorderLayout.SOUTH);
 	    this.setVisible(true);
