@@ -59,9 +59,7 @@ CREATE TABLE IF NOT EXISTS `trimestre` (
   `Debut` varchar(255) NOT NULL,
   `Fin` varchar(255) NOT NULL,
   -- clé étrangère année scol
-  CONSTRAINT Id_anneescolaire
-    FOREIGN KEY (anneescolaire)
-    REFERENCES anneescolaire(Id_anneescolaire)
+  ALTER TABLE `trimestre` ADD FOREIGN KEY (`Id_anneescolaire`) REFERENCES `anneescolaire`(`Id_anneescolaire`) ON DELETE RESTRICT ON UPDATE RESTRICT;
   PRIMARY KEY (`Id_trimestre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
