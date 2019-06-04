@@ -6,4 +6,5 @@
  *
  */
 module gestion {
+	requires java.desktop;
 }
