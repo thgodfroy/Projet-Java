@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="mysql-connector-java-5.1.47"/>
-	<classpathentry kind="src" path="gestion-ecole"/>
-	<classpathentry kind="src" path="Resssources Projet Java"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Lucie/Documents/ING3/Info/Java/Projet/Projet-Java/mysql-connector-java-5.1.47.zip"/>
-	<classpathentry kind="output" path="essaiGraph/bin"/>
-</classpath>
