@@ -46,7 +46,8 @@ public class ProfesseurDAO extends DAO<professeur> {
 	    } catch (SQLException e) {
 	      e.printStackTrace();
 	    } */
-	    return professeur;
+	    //test
+	    
 	  }
 
 	  public boolean update1(professeur obj) {
