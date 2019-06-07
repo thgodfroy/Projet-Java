@@ -15,6 +15,8 @@ public class main {
 		
 		Connexion c = new Connexion (name, login, password);
 		
+		String requete = "INSERT INTO discipline(nom) VALUES ('yes')";
+		c.executeUpdate(requete);
 	}
 
 }
