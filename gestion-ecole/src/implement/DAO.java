@@ -10,6 +10,10 @@ public abstract class DAO<T> {
     this.connect = conn;
   }
    
+  public Connexion getConnexion() {
+	  return this.connect;
+  }
+  
   /**
   * Méthode de création
   * @param obj
