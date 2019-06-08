@@ -12,7 +12,7 @@ public class main {
 		
 		fenetre fen = new fenetre();
 
-		String name = "projetJava";
+		String name = "projetjava";
 		String login="root";
 		String password="";
 	
@@ -28,7 +28,7 @@ public class main {
 		
 		
 		String requete = "INSERT INTO discipline(nom) VALUES ('yes')";
-		String requete2 = "INSERT INTO discipline(id) VALUES ('1')";
+	//	String requete2 = "INSERT INTO discipline(id) VALUES ('1')";
 		c.executeUpdate(requete);
 
 	}
