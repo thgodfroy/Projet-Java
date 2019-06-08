@@ -12,7 +12,7 @@ public class main {
 		
 		fenetre fen = new fenetre();
 
-		String name = "projetjava";
+		String name = "projetJava";
 		String login="root";
 		String password="";
 	

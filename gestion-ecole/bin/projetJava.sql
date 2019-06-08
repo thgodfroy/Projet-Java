@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 25, 2019 at 09:05 PM
+-- Generation Time: Jun 08, 2019 at 12:24 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -24,6 +24,13 @@ CREATE TABLE `anneescolaire` (
   `Id_anneescolaire` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `anneescolaire`
+--
+
+INSERT INTO `anneescolaire` (`Id_anneescolaire`) VALUES
+('2018/2019');
+
 -- --------------------------------------------------------
 
 --
@@ -31,7 +38,7 @@ CREATE TABLE `anneescolaire` (
 --
 
 CREATE TABLE `bulletin` (
-  `Id_bulletin` varchar(30) NOT NULL,
+  `Id_bulletin` int(30) NOT NULL,
   `Id_trimestre` varchar(30) NOT NULL,
   `Id_inscrip` varchar(30) NOT NULL,
   `appreciation` varchar(100) NOT NULL
@@ -73,6 +80,18 @@ CREATE TABLE `discipline` (
   `Id_discipline` varchar(30) NOT NULL,
   `nom` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `discipline`
+--
+
+INSERT INTO `discipline` (`Id_discipline`, `nom`) VALUES
+('1', 'Maths'),
+('2', 'Français'),
+('3', 'Anglais'),
+('4', 'Physique'),
+('5', 'Chimie'),
+('6', 'Histoire');
 
 -- --------------------------------------------------------
 
@@ -134,6 +153,16 @@ CREATE TABLE `niveau` (
   `nom` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `niveau`
+--
+
+INSERT INTO `niveau` (`Id_niveau`, `nom`) VALUES
+('1', 'Seconde'),
+('2', 'Premiere'),
+('3', 'Terminale'),
+('4', 'PCSI');
+
 -- --------------------------------------------------------
 
 --
@@ -144,8 +173,22 @@ CREATE TABLE `personne` (
   `Id_personne` varchar(30) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `prénom` varchar(30) NOT NULL,
-  `type` varchar(30) NOT NULL
+  `type` varchar(30) NOT NULL,
+  `mdp` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `personne`
+--
+
+INSERT INTO `personne` (`Id_personne`, `nom`, `prénom`, `type`, `mdp`) VALUES
+('1', 'Safi', 'Théodora', 'Eleve', 1),
+('2', 'Duchemann', 'Hugo', 'Eleve', 1),
+('3', 'Sternberger', 'Lucie', 'Eleve', 1),
+('4', 'Mokhber', 'Arash', 'Professeur', 1),
+('5', 'Segado', 'JP', 'Professeur', 1),
+('6', 'Finot', 'Thierry', 'Professeur', 1),
+('7', 'Dupont', 'Marie', 'Admin', 1);
 
 -- --------------------------------------------------------
 
@@ -160,6 +203,13 @@ CREATE TABLE `trimestre` (
   `Fin` varchar(255) NOT NULL,
   `Id_anneescolaire` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `trimestre`
+--
+
+INSERT INTO `trimestre` (`Id_trimestre`, `Numero`, `Debut`, `Fin`, `Id_anneescolaire`) VALUES
+('1', 1, '01/09/2018', '22/11/2018', '2018/2019');
 
 --
 -- Indexes for dumped tables
@@ -245,6 +295,16 @@ ALTER TABLE `personne`
 ALTER TABLE `trimestre`
   ADD PRIMARY KEY (`Id_trimestre`),
   ADD KEY `Id_anneescolaire` (`Id_anneescolaire`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bulletin`
+--
+ALTER TABLE `bulletin`
+  MODIFY `Id_bulletin` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
