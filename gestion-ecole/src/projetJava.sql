@@ -150,13 +150,15 @@ CREATE TABLE `personne` (
 -- Dumping data for table `personne`
 --
 
-INSERT INTO `personne` (`Id_personne`, `nom`, `prénom`, `type`) VALUES
-('1', 'Safi', 'Théodora', 'Eleve'),
-('2', 'Duchemann', 'Hugo', 'Eleve'),
-('3', 'Sternberger', 'Lucie', 'Eleve'),
-('4', 'Mokhber', 'Arash', 'Professeur'),
-('5', 'Segado', 'JP', 'Professeur'),
-('6', 'Finot', 'Thierry', 'Professeur');
+INSERT INTO `personne` (`Id_personne`, `nom`, `prénom`, `type`, `mdp`) VALUES
+('1', 'Safi', 'Théodora', 'Eleve', 1),
+('2', 'Duchemann', 'Hugo', 'Eleve', 1),
+('3', 'Sternberger', 'Lucie', 'Eleve', 1),
+('4', 'Mokhber', 'Arash', 'Professeur', 1),
+('5', 'Segado', 'JP', 'Professeur', 1),
+('6', 'Finot', 'Thierry', 'Professeur', 1),
+('7', 'Dupont', 'Marie', 'Admin', 1);
+
 
 -- --------------------------------------------------------
 
