@@ -3,22 +3,23 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class professeur extends personne {
-	
+
   //ID
-  private int id_prof = 0; 
+  private int id_prof = 0;
   //Liste des matières dispensées
   private Set<discipline> listMatiere = new HashSet<discipline>();
-
-  public professeur(int id,String nom, String prenom, int id_prof) {  
+	//Constructeur
+  public professeur(int id,String nom, String prenom, int id_prof) {
 	super(nom,prenom);
 	this.id_prof=id_prof;
   }
-
+	//Le second mais pb
   //public professeur(){
 	  //?????
 	  //super(id, nom, nom, nom);
   //}
 
+	//Setters + getters
   public int getId_prof() {
     return id_prof;
   }
