@@ -1,7 +1,7 @@
 package modele;
 //https://openclassrooms.com/fr/courses/26832-apprenez-a-programmer-en-java/26830-
 //liez-vos-tables-avec-des-objets-java-le-pattern-dao
-public class eleve {
+public class eleve extends personne{
 	
 	//ID
 	private int id = 0;

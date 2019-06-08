@@ -52,7 +52,7 @@ public class Connexion {
      */
     public Connexion(String nameDatabase, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
         // chargement driver "com.mysql.jdbc.Driver"
-        Class.forName("com.mysql.jdbc.Driver");
+       Class.forName("com.mysql.jdbc.Driver");
 
         // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
         String urlDatabase = "jdbc:mysql://localhost/" + nameDatabase;
@@ -62,6 +62,8 @@ public class Connexion {
 
         // création d'un ordre SQL (statement)
         stmt = conn.createStatement();
+        
+        System.out.println("Connexion reussie");
     }
 
     /**
@@ -210,4 +212,9 @@ public class Connexion {
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
     }
+
+	public Object createStatement(int typeScrollInsensitive, int concurReadOnly) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
