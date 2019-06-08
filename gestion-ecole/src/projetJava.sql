@@ -143,7 +143,8 @@ CREATE TABLE `personne` (
   `Id_personne` varchar(30) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `prénom` varchar(30) NOT NULL,
-  `type` varchar(30) NOT NULL
+  `type` varchar(30) NOT NULL,
+  `mdp` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
