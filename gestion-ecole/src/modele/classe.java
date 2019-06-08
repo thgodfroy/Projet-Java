@@ -13,14 +13,14 @@ public class classe {
 	private Set<professeur> listProfesseur = new HashSet<professeur>();
 	//Liste des élèves
 	private Set<eleve> listEleve = new HashSet<eleve>();
-
+	//Premier constructeur
 	public classe(int id, String nom) {
 	    this.id = id;
 	    this.nom = nom;
 	  }
-	  
+	//Second
 	public classe(){}
-
+	//Setters + Getters
 	public int getId() {
 	    return id;
 	  }
@@ -44,7 +44,7 @@ public class classe {
 	  public void setListProfesseur(Set<professeur> listProfesseur) {
 	    this.listProfesseur = listProfesseur;
 	  }
-
+		//ajout + suppression
 	  public void addProfesseur(professeur prof) {
 	    if(!listProfesseur.contains(prof))
 	      listProfesseur.add(prof);
@@ -75,5 +75,5 @@ public class classe {
 
 	  public boolean equals(classe cls){
 	    return this.getId() == cls.getId();
-	  }   
+	  }
 }
