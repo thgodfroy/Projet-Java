@@ -19,17 +19,6 @@ public class main {
 		
 		Connexion c = new Connexion (name, login, password);
 		
-		//try {
-			
-			
-		//}catch(SQLException e) {
-			//e.printStackTrace();
-		//}
-		
-		
-		String requete = "INSERT INTO discipline(nom) VALUES ('yes')";
-	//	String requete2 = "INSERT INTO discipline(id) VALUES ('1')";
-		c.executeUpdate(requete);
 
 	}
 

@@ -29,7 +29,7 @@ public class disciplineDAO extends DAO<discipline> {
 				  return true;
 				  
 			  }catch (SQLException e) {
-				 // A CHANGER Logger.getLogger(ClasseDAO.class.getName()).log(Level.SEVERE, null, ex);
+				 
 			  }
 			  
 			  return false;
