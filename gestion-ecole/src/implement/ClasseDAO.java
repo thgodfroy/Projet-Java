@@ -38,7 +38,7 @@ public class ClasseDAO extends DAO<classe> {
 
 		  int id = obj.getId();
 		  
-		  String requete = "DELETE FROM classe where id"+id;
+		  String requete = "DELETE FROM classe where id ="+id;
 		  
 		  try {
 			  c.executeUpdate(requete);
@@ -58,7 +58,7 @@ public class ClasseDAO extends DAO<classe> {
 
 		  String values = obj.getId() +",'" + obj.getNom()+"'";
 		  
-		  String requete = "UPDATE classe SET "+values+" WHERE id "+obj.getId()+"";
+		  String requete = "UPDATE classe SET "+values+" WHERE id ="+obj.getId()+"";
 		  
 		  
 		  try {
@@ -82,7 +82,7 @@ public class ClasseDAO extends DAO<classe> {
 		  try {
 			  
 			  Connexion c = this.getConnexion();
-			  c.remplirChampsRequete("SELECT from classe WHERE id "+id);
+			  c.remplirChampsRequete("SELECT from classe WHERE id ="+id);
 			
 			  
 		  }catch (SQLException e) {

@@ -41,7 +41,7 @@ public class disciplineDAO extends DAO<discipline> {
 
 			  int id = obj.getId();
 			  
-			  String requete = "DELETE FROM discipline where id"+id;
+			  String requete = "DELETE FROM discipline where id ="+id;
 			  
 			  try {
 				  c.executeUpdate(requete);
@@ -61,7 +61,7 @@ public class disciplineDAO extends DAO<discipline> {
 
 			  String values = obj.getId() +",'" + obj.getNom()+"'";
 			  
-			  String requete = "UPDATE discipline SET "+values+" WHERE id "+obj.getId()+"";
+			  String requete = "UPDATE discipline SET "+values+" WHERE id ="+obj.getId()+"";
 			  
 			  
 			  try {
@@ -84,7 +84,7 @@ public class disciplineDAO extends DAO<discipline> {
 			  try {
 				  
 				  Connexion c = this.getConnexion();
-				  c.remplirChampsRequete("SELECT from discipline WHERE id "+id);
+				  c.remplirChampsRequete("SELECT from discipline WHERE id ="+id);
 				  //Pas complet
 				  
 			  }catch (SQLException e) {

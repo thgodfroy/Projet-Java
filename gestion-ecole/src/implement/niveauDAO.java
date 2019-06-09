@@ -21,7 +21,7 @@ public class niveauDAO extends DAO<niveau> {
 
 		  String values = obj.getId() +",'" + obj.getNom()+"'";
 		  
-		  String requete = "INSERT INTO niveau VALUES =("+values+")";
+		  String requete = "INSERT INTO niveau VALUES ("+values+")";
 		  
 		  
 		  try {
