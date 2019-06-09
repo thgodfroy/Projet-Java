@@ -22,7 +22,7 @@ public class ecoleDAO extends DAO<ecole> {
 
 		  String values = obj.getId() +",'" + obj.getNom()+"'";
 		  
-		  String requete = "INSERT INTO ecole VALUES ("+values+")";
+		  String requete = "INSERT INTO ecole VALUES =("+values+")";
 		  
 		  
 		  try {
@@ -45,7 +45,7 @@ public class ecoleDAO extends DAO<ecole> {
 
 		  int id = obj.getId();
 		  
-		  String requete = "DELETE FROM ecole where id"+id;
+		  String requete = "DELETE FROM ecole where id="+id;
 		  
 		  try {
 			  c.executeUpdate(requete);
@@ -92,7 +92,7 @@ public class ecoleDAO extends DAO<ecole> {
 		  try {
 			  
 			  Connexion c = this.getConnexion();
-			  c.remplirChampsRequete("SELECT from ecole WHERE id "+id);
+			  c.remplirChampsRequete("SELECT from ecole WHERE id ="+id);
 			  //Pas complet
 			  
 		  }catch (SQLException e) {

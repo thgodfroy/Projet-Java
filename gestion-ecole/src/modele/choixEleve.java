@@ -12,10 +12,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-/**
- *
- * @author hugod
- */
+
 public class choixEleve extends JFrame {
     JButton bouton1 = new JButton("Bulletin du 1er trimestre");
     JButton bouton2 =new JButton("Bulletin du 2e trimestre");

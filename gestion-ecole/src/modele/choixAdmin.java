@@ -13,10 +13,7 @@ import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
-/**
- *
- * @author hugod
- */
+
 public class choixAdmin extends JFrame {
     JLabel titre= new JLabel("Que voulez-vous faire ?");
     JButton bouton1 = new JButton("Gérer les professeurs");

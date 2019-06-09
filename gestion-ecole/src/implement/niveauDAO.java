@@ -21,7 +21,7 @@ public class niveauDAO extends DAO<niveau> {
 
 		  String values = obj.getId() +",'" + obj.getNom()+"'";
 		  
-		  String requete = "INSERT INTO niveau VALUES ("+values+")";
+		  String requete = "INSERT INTO niveau VALUES =("+values+")";
 		  
 		  
 		  try {
@@ -45,7 +45,7 @@ public class niveauDAO extends DAO<niveau> {
 
 		  int id = obj.getId();
 		  
-		  String requete = "DELETE FROM niveau where id"+id;
+		  String requete = "DELETE FROM niveau where id="+id;
 		  
 		  try {
 			  c.executeUpdate(requete);
@@ -67,7 +67,7 @@ public class niveauDAO extends DAO<niveau> {
 
 		  String values = obj.getId() +",'" + obj.getNom()+"'";
 		  
-		  String requete = "UPDATE niveau SET "+values+" WHERE id "+obj.getNom()+"";
+		  String requete = "UPDATE niveau SET "+values+" WHERE id ="+obj.getNom()+"";
 		  
 		  
 		  try {
@@ -91,7 +91,7 @@ public class niveauDAO extends DAO<niveau> {
 		  try {
 			  
 			  Connexion c = this.getConnexion();
-			  c.remplirChampsRequete("SELECT from ecole WHERE id "+id);
+			  c.remplirChampsRequete("SELECT from ecole WHERE id ="+id);
 			  //Pas complet
 			  
 		  }catch (SQLException e) {
