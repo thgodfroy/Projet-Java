@@ -292,7 +292,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
      *
      * @param evt
      */
-    @Override
+   /* @Override
     @SuppressWarnings("CallToThreadDumpStack")
     public void actionPerformed(ActionEvent evt) {
         Object source = evt.getSource();
@@ -406,7 +406,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
             }
 
         }
-    }
+    }*/
 
     /**
      *
@@ -431,4 +431,10 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
             afficherLignes(nomTable);
         }
     }
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }

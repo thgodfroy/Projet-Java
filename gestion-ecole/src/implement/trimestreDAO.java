@@ -22,7 +22,7 @@ public class trimestreDAO extends DAO<trimestre> {
 		Connexion c = this.getConnexion();
 
 		
-		  String values = obj.getId() +",'" + obj.getNumero() +",'" obj.getDebut() +",'" obj.getFin() +",'" obj.getId_as()+"'";
+		  String values = obj.getId() +",'" + obj.getNumero() +"'";
 		  
 		  String requete = "INSERT INTO trimestre VALUES ("+values+")";
 		  
