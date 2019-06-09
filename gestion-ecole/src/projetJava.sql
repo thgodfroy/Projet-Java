@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 09, 2019 at 12:52 PM
+-- Generation Time: Jun 09, 2019 at 01:46 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -106,6 +106,19 @@ INSERT INTO `discipline` (`Id_discipline`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `eleve`
+--
+
+CREATE TABLE `eleve` (
+  `Id_stud` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prénom` varchar(30) NOT NULL,
+  `id_personne` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `enseignement`
 --
 
@@ -192,6 +205,19 @@ INSERT INTO `personne` (`Id_personne`, `nom`, `prénom`, `type`, `mdp`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `professeur`
+--
+
+CREATE TABLE `professeur` (
+  `Id_prof` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prénom` varchar(30) NOT NULL,
+  `id_personne` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `trimestre`
 --
 
@@ -252,6 +278,13 @@ ALTER TABLE `discipline`
   ADD PRIMARY KEY (`Id_discipline`);
 
 --
+-- Indexes for table `eleve`
+--
+ALTER TABLE `eleve`
+  ADD PRIMARY KEY (`Id_stud`),
+  ADD KEY `id_personne` (`id_personne`);
+
+--
 -- Indexes for table `enseignement`
 --
 ALTER TABLE `enseignement`
@@ -285,6 +318,13 @@ ALTER TABLE `niveau`
 --
 ALTER TABLE `personne`
   ADD PRIMARY KEY (`Id_personne`);
+
+--
+-- Indexes for table `professeur`
+--
+ALTER TABLE `professeur`
+  ADD PRIMARY KEY (`Id_prof`),
+  ADD KEY `id_personne` (`id_personne`);
 
 --
 -- Indexes for table `trimestre`
@@ -335,6 +375,12 @@ ALTER TABLE `enseignement`
 ALTER TABLE `inscription`
   ADD CONSTRAINT `inscription_ibfk_1` FOREIGN KEY (`Id_classe`) REFERENCES `classe` (`Id_classe`),
   ADD CONSTRAINT `inscription_ibfk_2` FOREIGN KEY (`Id_personne`) REFERENCES `personne` (`Id_personne`);
+
+--
+-- Constraints for table `professeur`
+--
+ALTER TABLE `professeur`
+  ADD CONSTRAINT `professeur_ibfk_1` FOREIGN KEY (`id_personne`) REFERENCES `professeur` (`Id_prof`);
 
 --
 -- Constraints for table `trimestre`
