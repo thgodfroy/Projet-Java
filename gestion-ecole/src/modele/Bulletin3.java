@@ -9,10 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-/**
- *
- * @author hugod
- */
+
 public class Bulletin3 extends JFrame {
     public Bulletin3(){
         this.setTitle("Fenêtre de recherche eleve");

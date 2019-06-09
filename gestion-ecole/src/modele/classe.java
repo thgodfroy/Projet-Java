@@ -12,7 +12,7 @@ public class classe {
 	//Liste des professeurs
 	private Set<professeur> listProfesseur = new HashSet<professeur>();
 	//Liste des élèves
-	private Set<eleve> listEleve = new HashSet<eleve>();
+	private Set<personne> listEleve = new HashSet<personne>();
 	//Premier constructeur
 	public classe(int id, String nom) {
 	    this.id = id;
@@ -54,22 +54,22 @@ public class classe {
 	    this.listProfesseur.remove(prof);
 	  }
 
-	  public Set<eleve> getListEleve() {
+	  public Set<personne> getListEleve() {
 	    return listEleve;
 	  }
 
-	  public void setListEleve(Set<eleve> listEleve) {
+	  public void setListEleve(Set<personne> listEleve) {
 	    this.listEleve = listEleve;
 	  }
 
 	  //Ajoute un élève à la classe
-	  public void addEleve(eleve eleve){
+	  public void addEleve(personne eleve){
 	    if(!this.listEleve.contains(eleve))
 	      this.listEleve.add(eleve);
 	  }
 
 	  //Retire un élève de la classe
-	  public void removeEleve(eleve eleve){
+	  public void removeEleve(personne eleve){
 	    this.listEleve.remove(eleve);
 	  }
 

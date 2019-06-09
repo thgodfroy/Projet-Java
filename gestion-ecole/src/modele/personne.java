@@ -3,8 +3,10 @@ package modele;
 public class personne {
 
 	private int id;
-	private String nom, prenom, type;
+	private String nom, prenom, type, mdp;
 	//Constructeur
+	
+	
     public personne(int id,String nom, String prenom, String type) {
 
     	this.id=id;
@@ -16,7 +18,11 @@ public class personne {
     public personne(String nom, String prenom) {
 
     }
-    //Setters et getters
+    public personne() {
+		// TODO Auto-generated constructor stub
+	}
+
+	//Setters et getters
     public int getId() {
         return id;
     }
@@ -53,4 +59,7 @@ public class personne {
         return nom + " " + prenom;
     }
 
+    public String getMdp() {
+        return mdp;
+    }
 }

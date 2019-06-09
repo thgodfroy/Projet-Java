@@ -1,9 +1,11 @@
 package implement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import controleur.Connexion;
 import modele.classe;
+import modele.discipline;
 
 public class ClasseDAO extends DAO<classe> {
 	  public ClasseDAO(Connexion conn) {
@@ -11,19 +13,83 @@ public class ClasseDAO extends DAO<classe> {
 	  }
 
 	  public boolean create(classe obj) {
-	    return false;
+	    
+		  Connexion c = this.getConnexion();
+
+		  String values = obj.getId() +",'" + obj.getNom()+"'";
+		  
+		  String requete = "INSERT INTO classe VALUES ("+values+")";
+		  
+		  
+		  try {
+			  c.executeUpdate(requete);
+			  System.out.println("Requete ajoutee : " +requete);
+			  return true;
+			  
+		  }catch (SQLException e) {
+			 
+		  }
+		  return false;
 	  }
 
 	  public boolean delete(classe obj) {
-	    return false;
+	    
+		  Connexion c = this.getConnexion();
+
+		  int id = obj.getId();
+		  
+		  String requete = "DELETE FROM classe where id"+id;
+		  
+		  try {
+			  c.executeUpdate(requete);
+			  System.out.println("Requete supprimee : " +requete);
+			  return true;
+			  
+		  }catch (SQLException e) {
+			
+		  }
+		  
+		  return false;
 	  }
 	   
 	  public boolean update(classe obj) {
-	    return false;
+	    
+		  Connexion c = this.getConnexion();
+
+		  String values = obj.getId() +",'" + obj.getNom()+"'";
+		  
+		  String requete = "UPDATE classe SET "+values+" WHERE id "+obj.getId()+"";
+		  
+		  
+		  try {
+			  c.executeUpdate(requete);
+			  System.out.println("Requete mise a jour : " +requete);
+			  return true;
+			  
+		  }catch (SQLException e) {
+			 
+		  }
+		  
+		  return false;
 	  }
 
 	  public classe find(int id) {
-	    classe classe = new classe();            
+		  
+		  
+		  classe cla = new classe();
+		  ArrayList<String> tab = new ArrayList<String>();
+
+		  try {
+			  
+			  Connexion c = this.getConnexion();
+			  c.remplirChampsRequete("SELECT from classe WHERE id "+id);
+			
+			  
+		  }catch (SQLException e) {
+			 e.printStackTrace();
+		  } 
+		  
+		  return cla;
 	    /*try {
 	      ResultSet result = this.connect.createStatement(
 	        ResultSet.TYPE_SCROLL_INSENSITIVE, 
@@ -56,7 +122,7 @@ public class ClasseDAO extends DAO<classe> {
 	    } catch (SQLException e) {
 	      e.printStackTrace();
 	    } */
-	    return classe;
+	
 	  }
 
 	}

@@ -15,10 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author hugod
- */
+
 public class choixProf extends JFrame {
     private final JPanel rec = new JPanel();
     JButton ajouter = new JButton("Ajouter une note");
