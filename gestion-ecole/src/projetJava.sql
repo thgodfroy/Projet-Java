@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+--- phpMyAdmin SQL Dump
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 09, 2019 at 01:48 PM
+-- Generation Time: Jun 09, 2019 at 06:22 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -42,18 +42,19 @@ CREATE TABLE `bulletin` (
   `Id_trimestre` varchar(30) NOT NULL,
   `Id_personne` varchar(30) NOT NULL,
   `appreciation` varchar(100) NOT NULL,
-  `moyenne` int(3) NOT NULL
+  `moyenne` int(3) NOT NULL,
+  `discipline` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bulletin`
 --
 
-INSERT INTO `bulletin` (`Id_bulletin`, `Id_trimestre`, `Id_personne`, `appreciation`, `moyenne`) VALUES
-(1, '1', '1', 'Bon trimestre', 15),
-(2, '1', '2', 'Excellent trimestre', 18),
-(3, '2', '1', 'Bon second semestre', 16),
-(4, '3', '1', 'Une légère baisse', 15);
+INSERT INTO `bulletin` (`Id_bulletin`, `Id_trimestre`, `Id_personne`, `appreciation`, `moyenne`, `discipline`) VALUES
+(1, '1', '1', 'Bon trimestre', 15, ''),
+(2, '1', '2', 'Excellent trimestre', 18, ''),
+(3, '2', '1', 'Bon second semestre', 16, ''),
+(4, '3', '1', 'Une légère baisse', 15, '');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,7 @@ INSERT INTO `discipline` (`Id_discipline`, `nom`) VALUES
 --
 
 CREATE TABLE `eleve` (
-  `Id_stud` varchar(30) NOT NULL,
+  `Id_stud` int(30) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `prénom` varchar(30) NOT NULL,
   `id_personne` varchar(30) NOT NULL
@@ -339,10 +340,10 @@ ALTER TABLE `trimestre`
 --
 
 --
--- AUTO_INCREMENT for table `bulletin`
+-- AUTO_INCREMENT for table `eleve`
 --
-ALTER TABLE `bulletin`
-  MODIFY `Id_bulletin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `eleve`
+  MODIFY `Id_stud` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
