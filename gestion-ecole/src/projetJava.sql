@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 09, 2019 at 12:35 PM
+-- Generation Time: Jun 09, 2019 at 12:52 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -40,9 +40,20 @@ INSERT INTO `anneescolaire` (`Id_anneescolaire`) VALUES
 CREATE TABLE `bulletin` (
   `Id_bulletin` int(30) NOT NULL,
   `Id_trimestre` varchar(30) NOT NULL,
-  `Id_inscrip` varchar(30) NOT NULL,
-  `appreciation` varchar(100) NOT NULL
+  `Id_personne` varchar(30) NOT NULL,
+  `appreciation` varchar(100) NOT NULL,
+  `moyenne` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bulletin`
+--
+
+INSERT INTO `bulletin` (`Id_bulletin`, `Id_trimestre`, `Id_personne`, `appreciation`, `moyenne`) VALUES
+(1, '1', '1', 'Bon trimestre', 15),
+(2, '1', '2', 'Excellent trimestre', 18),
+(3, '2', '1', 'Bon second semestre', 16),
+(4, '3', '1', 'Une légère baisse', 15);
 
 -- --------------------------------------------------------
 
@@ -197,7 +208,9 @@ CREATE TABLE `trimestre` (
 --
 
 INSERT INTO `trimestre` (`Id_trimestre`, `Numero`, `Debut`, `Fin`, `Id_anneescolaire`) VALUES
-('1', 1, '01/09/2018', '22/11/2018', '2018/2019');
+('1', 1, '01/09/2018', '22/11/2018', '2018/2019'),
+('2', 2, '23/11/2018', '15/03/2018', '2018/2019'),
+('3', 3, '16/03/2019', '07/06/2019', '2018/2019');
 
 --
 -- Indexes for dumped tables
@@ -213,7 +226,9 @@ ALTER TABLE `anneescolaire`
 -- Indexes for table `bulletin`
 --
 ALTER TABLE `bulletin`
-  ADD PRIMARY KEY (`Id_bulletin`);
+  ADD PRIMARY KEY (`Id_bulletin`),
+  ADD KEY `Id_trimestre` (`Id_trimestre`),
+  ADD KEY `Id_personne` (`Id_personne`);
 
 --
 -- Indexes for table `classe`
@@ -227,7 +242,8 @@ ALTER TABLE `classe`
 -- Indexes for table `detailbulletin`
 --
 ALTER TABLE `detailbulletin`
-  ADD PRIMARY KEY (`Id_detail`);
+  ADD PRIMARY KEY (`Id_detail`),
+  ADD KEY `Id_bulletin` (`Id_bulletin`);
 
 --
 -- Indexes for table `discipline`
@@ -285,11 +301,18 @@ ALTER TABLE `trimestre`
 -- AUTO_INCREMENT for table `bulletin`
 --
 ALTER TABLE `bulletin`
-  MODIFY `Id_bulletin` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_bulletin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bulletin`
+--
+ALTER TABLE `bulletin`
+  ADD CONSTRAINT `bulletin_ibfk_1` FOREIGN KEY (`Id_personne`) REFERENCES `personne` (`Id_personne`),
+  ADD CONSTRAINT `bulletin_ibfk_2` FOREIGN KEY (`Id_trimestre`) REFERENCES `trimestre` (`Id_trimestre`);
 
 --
 -- Constraints for table `classe`
