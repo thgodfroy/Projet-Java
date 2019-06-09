@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modele;
+package vue;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -21,10 +21,7 @@ import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-/**
- *
- * @author hugod
- */
+
 public class SuppNote extends JFrame implements MouseListener {
     
     JLabel nom=new JLabel("Entrez le nom de famille");
