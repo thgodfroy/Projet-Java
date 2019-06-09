@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package vue;
+import vue.choixAdmin;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -21,12 +22,20 @@ import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+/**
+ *
+ * @author hugod
+ */
 public class rechercheEleveAdmin extends JFrame implements MouseListener {
     
-    JLabel nom=new JLabel("Entrez le nom de famille");
+    JLabel name=new JLabel("Entrez le nom de famille");
     JTextField text1= new JTextField("nom");
-    JLabel prenom=new JLabel("Entrez le prenom");
+    JLabel prename=new JLabel("Entrez le prenom");
     JTextField text2= new JTextField("prenom");
     JLabel classe=new JLabel("Entrez la classe");
     JTextField text3= new JTextField("classe");
@@ -35,9 +44,10 @@ public class rechercheEleveAdmin extends JFrame implements MouseListener {
     JButton ajouter=new JButton("Ajouter");
     JButton supprimer=new JButton("Supprimer");
     JButton retour=new JButton("Retour");
-    public rechercheEleveAdmin(){
-        this.setTitle("Fenêtre de recherche eleve");
-	this.setSize((500), 250);
+    String sql;
+    public rechercheEleveAdmin(String nom,String prenom){
+        this.setTitle("Recherche Eleve de "+nom+" "+prenom);
+	this.setSize((1000), 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setLocationRelativeTo(null);
 	JPanel cell1= new JPanel();
@@ -55,35 +65,74 @@ public class rechercheEleveAdmin extends JFrame implements MouseListener {
         ajouter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                          
-            }
-        });
+                String url="jdbc:mysql://localhost:3306/projetjava";
+                String login="root";
+                String mdp="";
+                String entreenom=text1.getText();
+                String entreeprenom=text2.getText();
+                String entreeclasse=text3.getText();
+                String entreepromo=text4.getText();
+                try{
+                    Connection connexion = DriverManager.getConnection(url,login,mdp);
+                    Statement st = connexion.createStatement();
+                    sql = "INSERT INTO personne VALUES (0,'"+entreenom+"','"+entreeprenom+"','Eleve','1')";
+                    st.executeQuery(sql);
+                    sql="SELECT id_personne FROM personne WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"' ";
+                    
+                    sql = "INSERT INTO eleve VALUES (0,'"+entreenom+"','"+entreeprenom+"','"+sql+"','"+entreeclasse+"','"+entreepromo+"')";
+                    st.executeQuery(sql);
+            }catch(SQLException sqle){
+                }
+        }});
         supprimer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                            
+                String url="jdbc:mysql://localhost:3306/projetjava";
+                String login="root";
+                String mdp="";
+                String entreenom=text1.getText();
+                String entreeprenom=text2.getText();
+                String entreeclasse=text3.getText();
+                String entreepromo=text4.getText();
+                try{
+                    Connection connexion = DriverManager.getConnection(url,login,mdp);
+                    
+                    Statement st = connexion.createStatement();
+                    sql="SELECT id_personne FROM personne WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"' ";
+                    
+                    sql="DELETE FROM eleve WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"' AND classe='"+entreeclasse+"' AND promotion='"+entreepromo+"' AND id_personne='"+sql+"'";                 
+                    ResultSet res  = st.executeQuery(sql);
+                    sql="DELETE FROM personne WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"'";
+                    st.executeQuery(sql);
+                    if(!res.next()){
+                        System.out.println("erreur");
+                    }else{
+                        System.out.println("Suppression effectuée");
+                    }
+            }catch(SQLException sqle){
+                }
             }
         });
         retour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                choixAdmin admin= new choixAdmin();            
+                choixAdmin admin = new choixAdmin(nom,prenom);           
             }
         });
         
-        cell1.setPreferredSize(new Dimension(600, 40));
-        cell1.add(nom);
-        cell2.setPreferredSize(new Dimension(80, 40));
+        cell1.setPreferredSize(new Dimension(60, 40));
+        cell1.add(name);
+        cell2.setPreferredSize(new Dimension(600, 40));
         cell2.add(text1);
-        cell3.setPreferredSize(new Dimension(600, 40));
-        cell3.add(prenom);
-        cell4.setPreferredSize(new Dimension(80, 40));
+        cell3.setPreferredSize(new Dimension(60, 40));
+        cell3.add(prename);
+        cell4.setPreferredSize(new Dimension(600, 40));
         cell4.add(text2);
-	cell5.setPreferredSize(new Dimension(600, 40));
+	cell5.setPreferredSize(new Dimension(60, 40));
         cell5.add(classe);    
-        cell6.setPreferredSize(new Dimension(80, 40));
+        cell6.setPreferredSize(new Dimension(600, 40));
         cell6.add(text3);
-        cell7.setPreferredSize(new Dimension(600, 40));
+        cell7.setPreferredSize(new Dimension(60, 40));
         cell7.add(promo);
         cell8.setPreferredSize(new Dimension(80, 40));
         cell8.add(text4);
@@ -93,6 +142,7 @@ public class rechercheEleveAdmin extends JFrame implements MouseListener {
         cell10.add(retour);
         cell11.setPreferredSize(new Dimension(600, 40));
         cell11.add(supprimer);
+        text1.setSize(800,40);
         
         content.setPreferredSize(new Dimension(300, 120));
         content.setLayout(new GridBagLayout());
@@ -104,10 +154,10 @@ public class rechercheEleveAdmin extends JFrame implements MouseListener {
         gbc.gridwidth = 2;
         content.add(cell1,gbc);
         
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 1;
-        gbc.gridwidth = 3;
+        gbc.gridwidth = 2;
         content.add(cell2,gbc);
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         
@@ -117,10 +167,10 @@ public class rechercheEleveAdmin extends JFrame implements MouseListener {
         gbc.gridwidth = 2;
         content.add(cell3,gbc);
         
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridheight = 1;
-        gbc.gridwidth = 3;
+        gbc.gridwidth = 2;
         content.add(cell4,gbc);
         
         
@@ -130,10 +180,10 @@ public class rechercheEleveAdmin extends JFrame implements MouseListener {
         gbc.gridwidth = 2;
         content.add(cell5,gbc);
         
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 2;
         gbc.gridheight = 1;
-        gbc.gridwidth = 3;
+        gbc.gridwidth = 2;
         content.add(cell6,gbc);
        
         gbc.gridx = 0;
@@ -142,10 +192,10 @@ public class rechercheEleveAdmin extends JFrame implements MouseListener {
         gbc.gridwidth = 2;
         content.add(cell7,gbc);
         
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 3;
         gbc.gridheight = 1;
-        gbc.gridwidth = 3;
+        gbc.gridwidth = 2;
         content.add(cell8,gbc);
         
         gbc.gridx = 0;

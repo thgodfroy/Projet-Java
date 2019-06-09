@@ -13,14 +13,16 @@ import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
-
+/**
+ *
+ * @author hugod
+ */
 public class choixAdmin extends JFrame {
     JLabel titre= new JLabel("Que voulez-vous faire ?");
     JButton bouton1 = new JButton("Gérer les professeurs");
     JButton bouton2 =new JButton("Gérer les élèves");
-    JButton bouton3 =new JButton("Reporting");
-    public choixAdmin(){
-        this.setTitle("Choix de l'administrateur");
+    public choixAdmin(String nom, String prenom){
+        this.setTitle("Choix de "+nom+" "+prenom);
 	this.setSize(1000, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setLocationRelativeTo(null);
@@ -31,13 +33,13 @@ public class choixAdmin extends JFrame {
          bouton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                rechercheProfAdmin rec2= new rechercheProfAdmin();
+                rechercheProfAdmin rec2= new rechercheProfAdmin(nom,prenom);            
             }
         });
           bouton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                rechercheEleveAdmin rec2= new rechercheEleveAdmin();
+                rechercheEleveAdmin rec2= new rechercheEleveAdmin(nom,prenom);            
             }
         });
         cell1.setPreferredSize(new Dimension(600, 40));
@@ -46,11 +48,11 @@ public class choixAdmin extends JFrame {
         cell2.add(bouton1);
         cell3.setPreferredSize(new Dimension(600, 40));
         cell3.add(bouton2);
-
+        
 	content.setPreferredSize(new Dimension(300, 120));
         content.setLayout(new GridBagLayout());
 	GridBagConstraints gbc = new GridBagConstraints();
-
+        
         gbc.gridx = 0;
         gbc.gridy = 0;
         //La taille en hauteur et en largeur
@@ -58,7 +60,7 @@ public class choixAdmin extends JFrame {
         gbc.gridwidth = 3;
         content.add(cell1,gbc);
         gbc.gridwidth = GridBagConstraints.REMAINDER;
-
+        
         gbc.gridx = 0;
         gbc.gridy = 1;
         //La taille en hauteur et en largeur
@@ -66,14 +68,14 @@ public class choixAdmin extends JFrame {
         gbc.gridwidth = 3;
         content.add(cell2,gbc);
         gbc.gridwidth = GridBagConstraints.REMAINDER;
-
+        
         gbc.gridx = 0;
         gbc.gridy = 2;
         //La taille en hauteur et en largeur
         gbc.gridheight = 1;
         gbc.gridwidth = 3;
         content.add(cell3,gbc);
-
+        
         this.setContentPane(content);
         this.setVisible(true);
     }

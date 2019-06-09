@@ -5,6 +5,8 @@
  */
 package vue;
 
+import vue.SuppNote;
+import vue.AjoutNote;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,14 +17,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+/**
+ *
+ * @author hugod
+ */
 public class choixProf extends JFrame {
     private final JPanel rec = new JPanel();
     JButton ajouter = new JButton("Ajouter une note");
     JButton supprimer =new JButton("Supprimer une note");
-    public choixProf(){
+    public choixProf(String nom, String prenom){
         JPanel content=new JPanel();
-        this.setTitle("Fenêtre de recherche");
+        this.setTitle("Choix de "+nom+" "+prenom);
 	this.setSize(500, 250);
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,13 +37,13 @@ public class choixProf extends JFrame {
         ajouter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AjoutNote rec2= new AjoutNote();            
+                AjoutNote rec2= new AjoutNote(nom,prenom);            
             }
         });
         supprimer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                rechercheEleveAdmin rec2= new rechercheEleveAdmin();            
+                SuppNote rec2= new SuppNote(nom,prenom);            
             }
         });
         cell1.setPreferredSize(new Dimension(600, 40));

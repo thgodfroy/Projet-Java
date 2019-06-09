@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package vue;
+import vue.choixAdmin;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -15,16 +16,24 @@ import java.awt.event.ActionListener;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import javax.swing.JTextField;
 
-
+/**
+ *
+ * @author hugod
+ */
 public class rechercheProfAdmin extends JFrame implements MouseListener {
-    JLabel nom= new JLabel("Nom de famille");
-    JLabel prenom= new JLabel("Prenom");
+    JLabel name= new JLabel("Nom de famille");
+    JLabel prename= new JLabel("Prenom");
     JLabel matiere = new JLabel("Discipline");
     JTextField text1 = new JTextField("Nom     ");
     JTextField text2 = new JTextField("Prenom  ");
@@ -32,8 +41,9 @@ public class rechercheProfAdmin extends JFrame implements MouseListener {
     JButton ajouter = new JButton("Ajouter");
     JButton retour = new JButton("Retour");
     JButton supprimer = new JButton("Supprimer");
-    public rechercheProfAdmin(){
-        this.setTitle("Ma fenêtre");
+    String sql;
+    public rechercheProfAdmin(String nom,String prenom){
+        this.setTitle("Recherche Prof de "+nom+" "+prenom);
         this.setSize(500, 250);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -50,28 +60,65 @@ public class rechercheProfAdmin extends JFrame implements MouseListener {
         ajouter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                            
+                String url="jdbc:mysql://localhost:3306/projetjava";
+                String login="root";
+                String mdp="";
+                String entreenom=text1.getText();
+                String entreeprenom=text2.getText();
+                String entreemat=text3.getText();
+                
+                try{
+                    Connection connexion = DriverManager.getConnection(url,login,mdp);
+                    Statement st = connexion.createStatement();
+                    sql = "INSERT INTO professeur VALUES (0,'"+entreenom+"','"+entreeprenom+"','Professeur','1')";
+                    st.executeQuery(sql);
+                    sql="SELECT id_personne FROM personne WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"' ";
+                    
+                    sql = "INSERT INTO professeur VALUES (0,'"+entreenom+"','"+entreeprenom+"','"+sql+"','"+entreemat+"')";
+                    st.executeQuery(sql);
+            }catch(SQLException sqle){
+                }
             }
         });
         supprimer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                            
+                String url="jdbc:mysql://localhost:3306/projetjava";
+                String login="root";
+                String mdp="";
+                String entreenom=text1.getText();
+                String entreeprenom=text2.getText();
+                String entreemat=text3.getText();
+                
+                try{
+                    Connection connexion = DriverManager.getConnection(url,login,mdp);
+                    
+                    Statement st = connexion.createStatement();
+                    sql="SELECT id_personne FROM personne WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"' ";
+                    
+                    sql="DELETE FROM professeur WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"' AND discipline='"+entreemat+"' AND id_personne='"+sql+"'";                  
+                    ResultSet res  = st.executeQuery(sql);
+                    sql="DELETE FROM personne WHERE nom='"+entreenom+"' AND prénom='"+entreeprenom+"'";
+                    st.executeQuery(sql);
+                    
+            }catch(SQLException sqle){
+                }
             }
+            
         });
         retour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                choixAdmin admin= new choixAdmin();            
+                choixAdmin admin= new choixAdmin( nom, prenom);            
             }
         });
         
         cell1.setPreferredSize(new Dimension(100, 40));
-        cell1.add(nom);
+        cell1.add(name);
         cell2.setPreferredSize(new Dimension(80, 40));
         cell2.add(text1);
         cell3.setPreferredSize(new Dimension(60, 40));
-        cell3.add(prenom);
+        cell3.add(prename);
         cell4.setPreferredSize(new Dimension(80, 40));
         cell4.add(text2);
         cell5.setPreferredSize(new Dimension(60, 40));

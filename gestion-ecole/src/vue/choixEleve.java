@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package vue;
+import vue.Bulletin3;
+import vue.Bulletin2;
+import vue.Bulletin1;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.Dimension;
@@ -12,13 +15,16 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ *
+ * @author hugod
+ */
 public class choixEleve extends JFrame {
     JButton bouton1 = new JButton("Bulletin du 1er trimestre");
     JButton bouton2 =new JButton("Bulletin du 2e trimestre");
     JButton bouton3 =new JButton("Bulletin du 3e trimestre");
-    public choixEleve(){
-        this.setTitle("Fenêtre de recherche");
+    public choixEleve(String nom, String prenom){
+        this.setTitle("Page de "+nom+" "+prenom);
 	this.setSize(1000, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setLocationRelativeTo(null);
@@ -29,20 +35,20 @@ public class choixEleve extends JFrame {
         bouton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Bulletin1 b= new Bulletin1();            
+                Bulletin1 b= new Bulletin1(nom,prenom);            
             }
         });
         bouton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Bulletin2 b= new Bulletin2();   
+                Bulletin2 b= new Bulletin2(nom,prenom);   
                 
             }
         });
         bouton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Bulletin3 b= new Bulletin3();   
+                Bulletin3 b= new Bulletin3(nom,prenom);   
                 
             }
         });
