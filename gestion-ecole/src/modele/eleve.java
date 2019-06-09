@@ -12,15 +12,16 @@ public class eleve extends personne{
 
 	//constructeur
 	public eleve(int id, String nom, String prenom) {
+			super(nom,prenom);
 	    this.id = id;
 	    this.nom = nom;
 	    this.prenom = prenom;
 	  }
 	//2nd constructeur
-	public eleve(){
+	//public eleve(){
 
-	}
-	//Getters + Setters   
+	//}
+	//Getters + Setters
 	public int getId() {
 	    return id;
 	}
