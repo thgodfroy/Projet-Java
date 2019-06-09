@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 08, 2019 at 12:24 PM
+-- Generation Time: Jun 09, 2019 at 12:35 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -52,7 +52,6 @@ CREATE TABLE `bulletin` (
 
 CREATE TABLE `classe` (
   `Id_classe` varchar(30) NOT NULL,
-  `Id_ecole` varchar(30) NOT NULL,
   `Id_niveau` varchar(30) NOT NULL,
   `Id_anneescolaire` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -92,17 +91,6 @@ INSERT INTO `discipline` (`Id_discipline`, `nom`) VALUES
 ('4', 'Physique'),
 ('5', 'Chimie'),
 ('6', 'Histoire');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ecole`
---
-
-CREATE TABLE `ecole` (
-  `Id_ecole` varchar(30) NOT NULL,
-  `nom_ecole` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -232,7 +220,6 @@ ALTER TABLE `bulletin`
 --
 ALTER TABLE `classe`
   ADD PRIMARY KEY (`Id_classe`),
-  ADD KEY `Id_ecole` (`Id_ecole`),
   ADD KEY `Id_niveau` (`Id_niveau`),
   ADD KEY `Id_anneescolaire` (`Id_anneescolaire`);
 
@@ -247,12 +234,6 @@ ALTER TABLE `detailbulletin`
 --
 ALTER TABLE `discipline`
   ADD PRIMARY KEY (`Id_discipline`);
-
---
--- Indexes for table `ecole`
---
-ALTER TABLE `ecole`
-  ADD PRIMARY KEY (`Id_ecole`);
 
 --
 -- Indexes for table `enseignement`
@@ -314,7 +295,6 @@ ALTER TABLE `bulletin`
 -- Constraints for table `classe`
 --
 ALTER TABLE `classe`
-  ADD CONSTRAINT `classe_ibfk_1` FOREIGN KEY (`Id_ecole`) REFERENCES `ecole` (`Id_ecole`),
   ADD CONSTRAINT `classe_ibfk_2` FOREIGN KEY (`Id_niveau`) REFERENCES `niveau` (`Id_niveau`),
   ADD CONSTRAINT `classe_ibfk_3` FOREIGN KEY (`Id_anneescolaire`) REFERENCES `anneescolaire` (`Id_anneescolaire`);
 
